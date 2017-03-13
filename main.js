@@ -69,7 +69,7 @@ var Game = function() {
 		} else {
 			console.log('\n\n\t\tCats Game!\n\n');	
 		}
-		rl.close();
+		this.endGame();
 	}
 
 	this.makeMove = function(move) {
@@ -97,6 +97,11 @@ var Game = function() {
 		rl.question('Player ' + player + ': ', (move) => {
 			this.makeMove(move);
 		});
+	}
+
+	this.endGame = function() {
+		console.reset();
+		rl.close()
 	}
 
 	this.startTurn = function() {
