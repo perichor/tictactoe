@@ -41,6 +41,21 @@ var Game = function() {
 		this.isTheSame(board[2][0], board[1][1], board[0][2]);
 	};
 
+	this.checkCats = function() {
+		var board = this.board;
+		if (board[0][0] !== ' ' &&
+		 	board[1][0] !== ' ' &&
+		  board[2][0] !== ' ' &&
+		  board[0][1] !== ' ' &&
+		  board[1][1] !== ' ' &&
+		  board[2][1] !== ' ' &&
+		  board[0][2] !== ' ' &&
+		  board[1][2] !== ' ' &&
+		  board[2][2] !== ' ') {
+				this.winner = 'C';
+		}
+	};
+
 	this.logBoard = function() {
 		board = this.board;
 		console.log('\n\n' + board[0][0] + '|' + board[0][1] + '|' + board[0][2] + '\n' + '-----' + '\n' + board[1][0] + '|' + board[1][1] + '|' + board[1][2] + '\n' + '-----' + '\n' + board[2][0] + '|' + board[2][1] + '|' + board[2][2] + '\n\n');
@@ -49,8 +64,10 @@ var Game = function() {
 	this.logWinner = function() {
 		if (this.winner === 'X') {
 			console.log('\n\n\t\tPlayer One Wins\n\n');
-		} else {
+		} else if (this.winner === 'O') {
 			console.log('\n\n\t\tPlayer Two Wins\n\n');
+		} else {
+			console.log('\n\n\t\tCats Game!\n\n');	
 		}
 		rl.close();
 	}
@@ -66,6 +83,7 @@ var Game = function() {
 			this.turn = !this.turn;
 		}
 		console.reset();
+		this.checkCats();
 		this.checkWin();
 		if (this.winner !== ' ') {
 			this.logWinner();
@@ -89,7 +107,10 @@ var Game = function() {
 		}
 	}
 
+	console.reset()
 	this.startTurn();
 }
 
-var game = new Game();
+new Game();
+
+module.exports = Game;
