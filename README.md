@@ -1,7 +1,19 @@
-# tictactoe
+# Tic Tac Toe
 
-## Usage
+One Paragraph of project description goes here
 
-1. npm install
-1. npm start
+## Getting Started
 
+```terminal
+npm install
+npm start
+```
+
+## Running the tests
+
+```terminal
+npm test
+```
+## Authors
+
+* **Jeremy Sande** 
