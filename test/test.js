@@ -19,11 +19,42 @@ describe('Tic Tac Toe', function() {
 			[' ',' ',' '],
 			[' ',' ',' ']
 		]
+		game.board = board;
 		game.makeMove('0 2');
 		game.makeMove('1 1');
 		game.makeMove('0 1');
-		console.log(game.board)
 		expect(game.winner).to.equal('X');
 	});
+
+	it('should determine a cats game', function() {
+		var game = new Game();
+		var board = [
+			['X',' ',' '],
+			['X',' ','O'],
+			['O','X','O']
+		]
+		game.board = board;
+		game.makeMove('0 2');
+		game.makeMove('0 1');
+		game.makeMove('1 1');
+		expect(game.winner).to.equal('C');
+	});
+
+	it('should not let players play in the same place', function() {
+		var game = new Game();
+
+		var board = [
+			[' ',' ',' '],
+			[' ',' ',' '],
+			[' ',' ',' ']
+		]
+		game.board = board;
+
+		game.makeMove('0 0');
+		game.makeMove('0 0');
+		expect(game.board[0][0]).to.equal('X');
+		expect(game.turn).to.be.false;
+	});
+
 
 });
